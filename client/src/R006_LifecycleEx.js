@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
-class R005_LifecycleEx extends Component {
+class R006_LifecycleEx extends Component {
+  static getDerivedStateFromProps(props, state) {
+    console.log('2. getDerivedStateFromProps Call :'+props.prop_value);
+    return {};
+  }
   constructor(props) {
     super(props);
     this.state = {};
@@ -15,4 +19,4 @@ class R005_LifecycleEx extends Component {
   }
 }
 
-export default R005_LifecycleEx;
+export default R006_LifecycleEx;
