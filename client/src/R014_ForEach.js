@@ -3,20 +3,20 @@ import React, { Component } from 'react';
 class R014_ForEach extends Component {
 
   componentDidMount() {
-    var Es5_Arr = [ 3, 2, 8, 8 ]
-    var Es5_newArr = []
+    var For_Arr = [ 3, 2, 8, 8 ]
+    var For_newArr = []
     
-    for (var i = 0; i < Es5_Arr.length; i++) {
-      Es5_newArr.push(Es5_Arr[i])
+    for (var i = 0; i < For_Arr.length; i++) {
+      For_newArr.push(For_Arr[i])
     }
-    console.log("1. Es5_newArr : ["+Es5_newArr+"]")
+    console.log("1. For_newArr : ["+For_newArr+"]")
 
-    var Es6_Arr = [ 3, 3, 9, 8 ]
-    var Es6_newArr = []
-    Es6_Arr.forEach((result) => {
-      Es6_newArr.push(result)
+    var ForEach_Arr = [ 3, 3, 9, 8 ]
+    var ForEach_newArr = []
+    ForEach_Arr.forEach((result) => {
+      ForEach_newArr.push(result)
     })
-    console.log("2. Es6_newArr : ["+Es6_newArr+"]")
+    console.log("2. ForEach_newArr : ["+ForEach_newArr+"]")
   }
 
   render() {
