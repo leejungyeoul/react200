@@ -1,13 +1,15 @@
 import React from 'react';
 import './App.css';
-import ReactState from './R024_ReactState'
+import PropsNode from './R023_PropsNode'
 
 function App() {
   return (
     <div>
       <h1>Start React 200!</h1>
       <p>CSS 적용하기</p>
-      <ReactState reactString={"react"}/>
+      <PropsNode>
+        <span>node from App.js</span>
+      </PropsNode>
     </div>
   );
 }
