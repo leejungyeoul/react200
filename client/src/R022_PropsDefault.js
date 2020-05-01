@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import datatype from 'prop-types';
 
-class R021_PropsRequired extends Component {
+class R022_PropsDefault extends Component {
   render() {
     let {
       ReactString,
@@ -15,8 +14,9 @@ class R021_PropsRequired extends Component {
   }
 }
 
-R021_PropsRequired.propTypes = {
-  ReactString: datatype.isRequired,
+R022_PropsDefault.defaultProps = {
+  ReactString: "리액트",
+  ReactNumber: 400
 }
 
-export default R021_PropsRequired;
+export default R022_PropsDefault;
