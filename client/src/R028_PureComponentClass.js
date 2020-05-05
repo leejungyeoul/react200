@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
-class R027_ComponentClass extends Component {
+class R028_PureComponentClass extends PureComponent {
   constructor (props) {
     super(props);
     this.state = {
@@ -28,4 +28,4 @@ class R027_ComponentClass extends Component {
   }
 }
 
-export default R027_ComponentClass;
+export default R028_PureComponentClass;
