@@ -1,14 +1,13 @@
 import React from 'react';
-// import './App.css';
-import ReactstrapCard from './R039_ReactstrapCard'
-import 'bootstrap/dist/css/bootstrap.css'
+import './App.css';
+import FunctionComponent from './R030_FunctionComponent'
 
 function App() {
   return (
     <div>
       <h1>Start React 200!</h1>
       <p>CSS 적용하기</p>
-      <ReactstrapCard/>
+      <FunctionComponent contents="[ THIS IS FunctionComponent ]"/>
     </div>
   );
 }
