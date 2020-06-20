@@ -13,7 +13,7 @@ import Footer from './Footer/Footer';
 // login
 import LoginForm from './LoginForm';
 
-import reactDebounce from './R094_reactDebounce';
+import reactThrottle from './R095_reactThrottle';
 
 class App extends Component {
   render () {
@@ -21,7 +21,7 @@ class App extends Component {
       <div className="App">
         <HeaderAdmin/> 
         <Route exact path='/' component={LoginForm} />
-        <Route exact path='/Debounce' component={reactDebounce} />
+        <Route exact path='/Throttle' component={reactThrottle} />
         <Footer/>
       </div>
     );
