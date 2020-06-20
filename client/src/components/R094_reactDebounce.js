@@ -3,7 +3,7 @@ import { debounce } from "lodash";
 
 class R094_reactDebounce extends Component {
   debounceFunc = debounce(() => {
-    console.log("연관검색어 API Call");
+    console.log("Debounce API Call");
   }, 1000);
   
   render() {
