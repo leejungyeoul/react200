@@ -15,6 +15,7 @@ import LoginForm from './LoginForm';
 
 import reactThrottle from './R095_reactThrottle';
 import floatingPopulationList from './Floating_population/floatingPopulationList';
+import rechartsSimpleLineChart from './Floating_population/rechartsSimpleLineChart';
 
 class App extends Component {
   render () {
@@ -24,6 +25,7 @@ class App extends Component {
         <Route exact path='/' component={LoginForm} />
         <Route exact path='/Throttle' component={reactThrottle} />
         <Route path='/floatPopulationList' component={floatingPopulationList} />
+        <Route path='/rechartsSimpleLineChart' component={rechartsSimpleLineChart} />
         <Footer/>
       </div>
     );
