@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 import axios from "axios";
 
-class floatingPopulationListChart extends Component {
+class floatingPopulationAreaChart extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -28,7 +28,7 @@ class floatingPopulationListChart extends Component {
 
     render () {
         return (
-            <LineChart
+            <AreaChart
               width={1000}
               height={300}
               data={this.state.append_FPList}
@@ -40,11 +40,10 @@ class floatingPopulationListChart extends Component {
               <XAxis dataKey="군구" />
               <YAxis />
               <Tooltip />
-              <Legend />
-              <Line type="monotone" dataKey="유동인구수" stroke="#8884d8" />
-            </LineChart>
+              <Area type="monotone" dataKey="유동인구수" stroke="#8884d8" fill="#8884d8" />
+            </AreaChart>
           );
     }
 }
 
-export default floatingPopulationListChart;
+export default floatingPopulationAreaChart;
