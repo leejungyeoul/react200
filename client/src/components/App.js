@@ -19,6 +19,7 @@ import rechartsSimpleLineChart from './Floating_population/rechartsSimpleLineCha
 import floatingPopulationListChart from './Floating_population/floatingPopulationListChart';
 import floatingPopulationAreaChart from './Floating_population/floatingPopulationAreaChart';
 import floatingPopulationBarChart from './Floating_population/floatingPopulationBarChart';
+import floatingPopulationComposedChart from './Floating_population/floatingPopulationComposedChart';
 
 class App extends Component {
   render () {
@@ -32,6 +33,7 @@ class App extends Component {
         <Route path='/floatingPopulationListChart' component={floatingPopulationListChart} />
         <Route path='/floatingPopulationAreaChart' component={floatingPopulationAreaChart} />
         <Route path='/floatingPopulationBarChart' component={floatingPopulationBarChart} />
+        <Route path='/floatingPopulationComposedChart' component={floatingPopulationComposedChart} />
         <Footer/>
       </div>
     );
