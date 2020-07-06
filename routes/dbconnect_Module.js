@@ -41,9 +41,18 @@ router.post("/", (req, res) => {
       var time2 = new Date();
       console.log('## '+time2+ ' ##');
       console.log('## RESULT DATA LIST ## : \n', results);
-      string = JSON.stringify(results);
-      var json = JSON.parse(string);
-      res.send({ json });
+      if(results != undefined){
+        string = JSON.stringify(results);
+        var json = JSON.parse(string);
+        if (req.body.crud == "select") {
+          res.send({ json });
+        }else{
+          res.send("succ");
+        }
+      }else{
+        res.send("error");
+      }
+
       connection.release();
       console.log("========= Node Mybatis Query Log End =========\n");
     });
