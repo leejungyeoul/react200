@@ -1,9 +1,45 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import axios from "axios";
 import $ from 'jquery';
 import Swal from 'sweetalert2'
 
 class SoftwareView extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            before_swtcode: props.match.params.swtcode
+        }
+    }
+
+    componentDidMount () {
+        if(this.state.before_swtcode == 'register'){
+            $('.modifyclass').hide()
+        }else{
+            this.callSwToolInfoApi()
+            $('.saveclass').hide()
+        }
+    }
+
+    callSwToolInfoApi = async () => {
+        axios.post('/api/Swtool?type=list', {
+            is_Swtcode: this.state.before_swtcode,
+        })
+        .then( response => {
+            try {
+                var data = response.data.json[0]
+                $('#is_Swt_toolname').val(data.swt_toolname)
+                $('#is_Swt_demo_site').val(data.swt_demo_site)
+                $('#is_Giturl').val(data.swt_github_url)
+                $('#is_Comments').val(data.swt_comments)
+                $('#is_Swt_function').val(data.swt_function)
+            } catch (error) {
+                alert('작업중 오류가 발생하였습니다.')
+            }
+        })
+        .catch( error => {alert('작업중 오류가 발생하였습니다.');return false;} );
+    }
+
     submitClick = async (type, e) => {
 
         this.Swt_toolname_checker = $('#is_Swt_toolname').val();
@@ -188,7 +224,10 @@ class SoftwareView extends Component {
                                     </table>
                                     <div class="btn_confirm mt20" style={{"margin-bottom": "44px"}}>
                                         <Link to={'/SoftwareList'} className="bt_ty bt_ty1 cancel_ty1">취소</Link>
-                                        <a href="javascript:" className="bt_ty bt_ty2 submit_ty1 saveclass" onClick={(e) => this.submitClick('save', e)}>저장</a>
+                                        <a href="javascript:" className="bt_ty bt_ty2 submit_ty1 saveclass" 
+                                        onClick={(e) => this.submitClick('save', e)}>저장</a>
+                                        <a href="javascript:" className="bt_ty bt_ty2 submit_ty1 modifyclass" 
+                                        onClick={(e) => this.submitClick('modify', e)}>수정</a>
                                     </div>
                                 </div>
                             </article>
