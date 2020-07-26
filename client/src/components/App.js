@@ -19,6 +19,7 @@ import SoftwareList from './SoftwareToolsManage/SoftwareList';
 import SoftwareView from './SoftwareToolsManage/SoftwareView';
 
 import Register from './Register/Register';
+import PwChangeForm from './PwChangeForm';
 
 class App extends Component {
   constructor(props) {
@@ -28,31 +29,33 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.post('/api/LoginForm?type=SessionConfirm', {
-      token1 : cookie.load('userid') 
-      , token2 : cookie.load('username') 
-    })
-    .then( response => {
-        this.state.userid = response.data.token1
-        let password = cookie.load('userpassword')
-        if(password !== undefined){
-          axios.post('/api/LoginForm?type=SessionSignin', {
-            is_Email: this.state.userid,
-            is_Token : password
-          })
-          .then( response => {
-            if(response.data.json[0].useremail === undefined){
+    if(window.location.pathname.indexOf('/PwChangeForm') == -1){
+      axios.post('/api/LoginForm?type=SessionConfirm', {
+        token1 : cookie.load('userid') 
+        , token2 : cookie.load('username') 
+      })
+      .then( response => {
+          this.state.userid = response.data.token1
+          let password = cookie.load('userpassword')
+          if(password !== undefined){
+            axios.post('/api/LoginForm?type=SessionSignin', {
+              is_Email: this.state.userid,
+              is_Token : password
+            })
+            .then( response => {
+              if(response.data.json[0].useremail === undefined){
+                this.noPermission()
+              }
+            })
+            .catch( error => {
               this.noPermission()
-            }
-          })
-          .catch( error => {
+            });
+          }else{
             this.noPermission()
-          });
-        }else{
-          this.noPermission()
-        }
-    })
-    .catch( response => this.noPermission());
+          }
+      })
+      .catch( response => this.noPermission());
+    }
   }
 
   noPermission = (e) => {
@@ -77,6 +80,7 @@ class App extends Component {
         <Route path='/SoftwareList' component={SoftwareList} />
         <Route path='/SoftwareView/:swtcode' component={SoftwareView} />
         <Route path='/register' component={Register} />
+        <Route path='/PwChangeForm/:email/:token' component={PwChangeForm} />
         <Footer/>
       </div>
     );
